@@ -1,12 +1,14 @@
 import './App.css';
-import Dog from './component/Dog';
-import Main from './component/Main';
+import Tail from './component/Tail';
+import Title from './component/Title';
+import Body from "./component/Body"
 
 function App() {
   return(
       <div>
-        <Dog />
-        <Main />
+        <Title />
+        <Body />
+        <Tail />
       </div>
   );
 }
