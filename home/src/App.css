@@ -3,5 +3,10 @@
   color: black;
   font-size: 48px;
   padding: 24px;
-  background-color: aqua;
+  background-color: gray;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }
