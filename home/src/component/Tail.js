@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 const Tail = () => {
   return (
     <div>
-      <h1 className="Title-Style">Tail 영역</h1>
+      <h1 className="Title-Style"></h1>
     </div>
   );
 };
