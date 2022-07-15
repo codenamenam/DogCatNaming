@@ -1,6 +1,7 @@
 /* eslint-disable */
 import "../App.css";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const Body = () => {
   return (
@@ -14,9 +15,8 @@ const Body = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
                 alt=""
               />
-              <div class="card-body">
+              <div class="card-body mx-auto">
                 <h5 class="card-title">고양이</h5>
-                <p class="card-text">귀여움</p>
                 <a href="#" class="btn btn-primary">
                   선택
                 </a>
@@ -31,9 +31,8 @@ const Body = () => {
                 alt=""
                 class="card-img-top"
               />
-              <div class="card-body">
+              <div class="card-body mx-auto">
                 <h5 class="card-title">강아지</h5>
-                <p class="card-text">착함</p>
                 <a href="#" class="btn btn-primary">
                   선택
                 </a>
