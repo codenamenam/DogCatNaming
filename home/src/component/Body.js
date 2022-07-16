@@ -3,13 +3,20 @@ import "../App.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+const selectCard = (name) => {
+  console.log("Hello. " + name);
+};
+
 const Body = () => {
   return (
     <div class="card-deck">
+      <br />
+      <h1 class="title">동물을 선택해주세요.</h1>
+      <br />
       <div class="col d-flex justify-content-center">
         <div class="row">
           <div class="col-6">
-            <div class="card">
+            <div class="card" onClick={() => selectCard("cat")} click>
               <img
                 class="card-img-top"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
@@ -17,15 +24,13 @@ const Body = () => {
               />
               <div class="card-body mx-auto">
                 <h5 class="card-title">고양이</h5>
-                <a href="#" class="btn btn-primary">
-                  선택
-                </a>
               </div>
+              <a href="#" class="stretched-link"></a>
             </div>
           </div>
 
           <div class="col-6">
-            <div class="card">
+            <div class="card" onClick={() => selectCard("dog")}>
               <img
                 src="https://cdn.crowdpic.net/detail-thumb/thumb_d_382A8A747FFDF073E20C13398D110DE7.jpg"
                 alt=""
@@ -33,10 +38,8 @@ const Body = () => {
               />
               <div class="card-body mx-auto">
                 <h5 class="card-title">강아지</h5>
-                <a href="#" class="btn btn-primary">
-                  선택
-                </a>
               </div>
+              <a href="#" class="stretched-link"></a>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Title = () => {
   return (
-    <Navbar bg="light" expand="xl" variant="light">
+    <Navbar className="bg-nav" expand="xl" variant="light">
       <Container>
         <Navbar.Brand href="#home">댕냥이 이름짓기</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
