@@ -12,7 +12,16 @@ const Title = () => {
   return (
     <Navbar className="bg-nav" expand="xl" variant="light">
       <Container>
-        <Navbar.Brand href="#home">댕냥이 이름짓기</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img
+            alt=""
+            src="https://w7.pngwing.com/pngs/247/911/png-transparent-dog-grooming-cat-puppy-pet-adoption-dog-animals-pet-dog-like-mammal.png"
+            width="50"
+            height="50"
+            className="d-inline-block"
+          />{" "}
+          반려동물 이름짓기
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
