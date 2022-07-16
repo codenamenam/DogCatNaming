@@ -2,46 +2,39 @@
 import "../App.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 const Body = () => {
   return (
-    <div class="card-deck">
-      <div class="col d-flex justify-content-center">
-        <div class="row">
-          <div class="col-6">
-            <div class="card">
-              <img
-                class="card-img-top"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-                alt=""
-              />
-              <div class="card-body mx-auto">
-                <h5 class="card-title">고양이</h5>
-                <a href="#" class="btn btn-primary">
-                  선택
-                </a>
-              </div>
-            </div>
-          </div>
+    <Container>
+      <Row>
+        <Col>
+          <Card style={{ maxWidth: "22rem" }}>
+            <Card.Img
+              variant="Top"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+            />
+            <Card.Body>
+              <Card.Text>🐱</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
 
-          <div class="col-6">
-            <div class="card">
-              <img
-                src="https://cdn.crowdpic.net/detail-thumb/thumb_d_382A8A747FFDF073E20C13398D110DE7.jpg"
-                alt=""
-                class="card-img-top"
-              />
-              <div class="card-body mx-auto">
-                <h5 class="card-title">강아지</h5>
-                <a href="#" class="btn btn-primary">
-                  선택
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <Col>
+          <Card style={{ maxWidth: "22rem" }}>
+            <Card.Img
+              variant="Top"
+              src="https://cdn.crowdpic.net/detail-thumb/thumb_d_382A8A747FFDF073E20C13398D110DE7.jpg"
+            />
+            <Card.Body>
+              <Card.Text>🐶</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
