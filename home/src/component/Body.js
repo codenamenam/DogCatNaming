@@ -3,31 +3,11 @@ import "../App.css";
 import React from "react";
 import Breed from "./Breed";
 
-/*
-function selectCard(type) {
-  if (type == 1) {
-    console.log("Cat 선택");
-    return (
-      <div>
-        <Breed type="1"></Breed>
-      </div>
-    );
-  } else if (type == 2) {
-    console.log("Dog 선택");
-    return (
-      <div>
-        <Breed type="2"></Breed>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h1> 선택해주세요. </h1>
-      </div>
-    );
-  }
+function handleScroll() {
+  console.log("dd");
+  const ref = useRef(null);
+  ref.current?.scrollIntoView({ behavior: "smooth" });
 }
-*/
 
 class Body extends React.Component {
   constructor(props) {
@@ -43,6 +23,8 @@ class Body extends React.Component {
     this.setState((state) => ({
       type: type,
     }));
+
+    handleScroll();
   }
 
   render() {

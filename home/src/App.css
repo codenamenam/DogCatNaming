@@ -21,7 +21,7 @@
 }
 
 .title {
-  font-size: 55px;
+  font-size: auto;
   font-weight: 600;
   margin: 24px;
   text-align: center;
@@ -39,4 +39,9 @@
 
 .brand-nav {
   color: aqua;
+}
+
+.breedAreaBG {
+  background-color: gray;
+  height: 200px;
 }
