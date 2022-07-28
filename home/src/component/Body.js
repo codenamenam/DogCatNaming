@@ -9,7 +9,6 @@ function Body() {
 
   const handleClick = (type) => {
     setValue(type);
-
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -50,7 +49,7 @@ function Body() {
         </div>
       </div>
 
-      <div style={{ height: "15rem" }} />
+      <div style={{ height: "36px" }} />
       <Breed type={value}></Breed>
       <div ref={ref} />
     </div>
