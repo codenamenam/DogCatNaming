@@ -2,42 +2,92 @@
 
 import styles from "./Breed.module.css";
 
-const dog = [
-  "https://content.fortune.com/wp-content/uploads/2019/01/boo.jpg",
-  "https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn",
-  "https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp",
-  "https://ichef.bbci.co.uk/news/976/cpsprodpb/1A90/production/_124800860_gettyimages-1287712627.jpg",
-  "https://www.rd.com/wp-content/uploads/2022/01/GettyImages-912084898-e1641834261695.jpg",
-  "https://dogsqueensland.org.au/media/1003/buying-a-dog.jpg",
+const cat = [
+  [
+    "숏헤어",
+    "https://cdn.pixabay.com/photo/2017/08/12/19/30/cat-2635097_1280.jpg",
+  ],
+  [
+    "페르시안",
+    "https://cdn.pixabay.com/photo/2022/07/29/14/22/persian-cat-7351943_1280.jpg",
+  ],
+  [
+    "러시안 블루",
+    "https://cdn.pixabay.com/photo/2020/11/25/03/04/russian-blue-cat-5774414_1280.jpg",
+  ],
+  ["샴", "https://cdn.pixabay.com/photo/2015/08/09/19/02/cat-882049_1280.jpg"],
+  [
+    "터키쉬 앙고라",
+    "https://cdn.pixabay.com/photo/2018/08/08/20/08/cat-3593021_1280.jpg",
+  ],
+  [
+    "스코티시 폴드",
+    "https://cdn.pixabay.com/photo/2018/08/24/15/30/scotish-3628162_1280.jpg",
+  ],
 ];
 
-const cat = [
-  "https://media.npr.org/assets/img/2021/08/11/gettyimages-1279899488_wide-f3860ceb0ef19643c335cb34df3fa1de166e2761-s1100-c50.jpg",
-  "https://www.rd.com/wp-content/uploads/2021/01/GettyImages-1175550351.jpg",
-  "https://images.theconversation.com/files/457052/original/file-20220408-15-pl446k.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip",
-  "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip",
-  "https://www.collinsdictionary.com/images/full/cat_156310937.jpg",
+const dog = [
+  [
+    "말티즈",
+    "https://cdn.pixabay.com/photo/2019/02/24/12/58/maltese-4017525_1280.jpg",
+  ],
+  [
+    "시츄",
+    "https://cdn.pixabay.com/photo/2015/07/26/00/26/dog-860709_1280.jpg",
+  ],
+  [
+    "푸들",
+    "https://cdn.pixabay.com/photo/2018/09/30/16/08/poodle-3713803_1280.jpg",
+  ],
+  [
+    "골든리트리버",
+    "https://cdn.pixabay.com/photo/2017/04/19/21/29/dog-2243682_1280.jpg",
+  ],
+  [
+    "요크셔테리어",
+    "https://cdn.pixabay.com/photo/2015/05/30/14/33/yorkshire-terrier-790362_1280.jpg",
+  ],
+  [
+    "포메라니안",
+    "https://cdn.pixabay.com/photo/2017/10/24/19/29/pomapoo-2885845_1280.jpg",
+  ],
+  [
+    "진돗개",
+    "https://cdn.pixabay.com/photo/2020/04/28/08/51/korean-jindo-dog-5103470_1280.jpg",
+  ],
+  [
+    "닥스훈트",
+    "https://cdn.pixabay.com/photo/2012/08/10/18/52/foxhound-53951_1280.jpg",
+  ],
+  [
+    "믹스견",
+    "https://post-phinf.pstatic.net/MjAxODEwMzBfMjE0/MDAxNTQwODc4MzIxNjgw.xOCuOGSV1jK5qfqUir3m3O5fkojYRsk3EkJRlTOvt44g.ZNHiOytFzyN81ikfnHJFpT0aedqC9k9nQcbNtrSPIq8g.JPEG/GettyImages-841268710.jpg?type=w1200",
+  ],
 ];
 
 var temp = [""];
+var styleType = styles.container;
 
 function Breed(props) {
   if (props.type == 1) {
     temp = cat;
+    styleType = styles.containerC;
   } else if (props.type == 2) {
     temp = dog;
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styleType}>
       {temp.map((src) => (
         <div
           key={src}
           className={styles.card}
           style={{
-            backgroundImage: `url(${src})`,
+            backgroundImage: `url(${src[1]})`,
           }}
-        />
+        >
+          <div className={styles.cardText}>{src[0]}</div>
+        </div>
       ))}
     </div>
   );
