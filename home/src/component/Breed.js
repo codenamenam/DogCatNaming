@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 import styles from "./Breed.module.css";
+import { Route, Router, BrowserRouter, Link } from "react-router-dom";
+import ResultBody from "./ResultBody";
 
 const cat = [
   [
@@ -76,18 +78,28 @@ function Breed(props) {
     temp = dog;
   }
 
+  const clicked = (family) => {
+    console.log(family);
+    return <ResultBody family={family} />;
+  };
+
   return (
     <div className={styleType}>
       {temp.map((src) => (
-        <div
-          key={src}
-          className={styles.card}
-          style={{
-            backgroundImage: `url(${src[1]})`,
-          }}
-        >
-          <div className={styles.cardText}>{src[0]}</div>
-        </div>
+        <>
+          <Link to="/result">
+            <div
+              key={src}
+              className={styles.card}
+              style={{
+                backgroundImage: `url(${src[1]})`,
+              }}
+              onClick={() => clicked(src[0])}
+            >
+              <div className={styles.cardText}>{src[0]}</div>
+            </div>
+          </Link>
+        </>
       ))}
     </div>
   );

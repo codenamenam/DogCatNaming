@@ -3,14 +3,18 @@
 import "./App.css";
 import Title from "./component/Title";
 import Body from "./component/Body";
-import Breed from "./component/Breed";
+import Result from "./component/Result";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Title />
-      <Body />
-    </div>
+      <Routes>
+        <Route path="/" element={<Body />}></Route>
+        <Route path="/result" element={<Result />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
