@@ -9,10 +9,10 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Title = () => {
-  return (
+  const navBar = (
     <Navbar className="bg-nav" expand="xl" variant="light">
       <Container>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <img
             alt=""
             src="https://w7.pngwing.com/pngs/247/911/png-transparent-dog-grooming-cat-puppy-pet-adoption-dog-animals-pet-dog-like-mammal.png"
@@ -22,11 +22,13 @@ const Title = () => {
           />{" "}
           반려동물 이름짓기
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">이름짓기</Nav.Link>
             <Nav.Link href="#link">통계</Nav.Link>
+
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -43,6 +45,8 @@ const Title = () => {
       </Container>
     </Navbar>
   );
+
+  return navBar;
 };
 
 export default Title;

@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 import styles from "./Breed.module.css";
-import { Route, Router, BrowserRouter, Link } from "react-router-dom";
-import ResultBody from "./ResultBody";
+import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const cat = [
   [
@@ -78,16 +78,17 @@ function Breed(props) {
     temp = dog;
   }
 
-  const clicked = (family) => {
-    console.log(family);
-    return <ResultBody family={family} />;
+  const navigate = useNavigate();
+
+  const clicked = (breed) => {
+    navigate("/result", { state: { breed: breed } });
   };
 
   return (
-    <div className={styleType}>
-      {temp.map((src) => (
-        <>
-          <Link to="/result">
+    <>
+      <div className={styleType}>
+        {temp.map((src) => (
+          <>
             <div
               key={src}
               className={styles.card}
@@ -98,10 +99,10 @@ function Breed(props) {
             >
               <div className={styles.cardText}>{src[0]}</div>
             </div>
-          </Link>
-        </>
-      ))}
-    </div>
+          </>
+        ))}
+      </div>
+    </>
   );
 }
 
