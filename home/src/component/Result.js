@@ -1,23 +1,26 @@
 /* eslint-disable */
 
 import { useLocation } from "react-router-dom";
+import ResultStat from "./Result/ResultStat";
+import Talk from "./Result/Talk";
 
 function Result() {
   const location = useLocation();
 
+  //직접 주소로 접속했을때
   if (location.state == null) {
     return <h1>Page not found.</h1>;
   }
 
   const breed = location.state.breed;
-  const element = (
+  const typeSelect = location.state.typeSelect;
+
+  return (
     <>
-      <div>
-        <h1>{breed} 선택하셨습니다.</h1>
-      </div>
+      <ResultStat breed={breed} typeSelect={typeSelect} />
+      <Talk typeSelect={typeSelect} />
     </>
   );
-  return element;
 }
 
 export default Result;

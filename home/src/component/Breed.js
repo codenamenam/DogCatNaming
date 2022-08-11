@@ -67,27 +67,30 @@ const dog = [
   ],
 ];
 
-var temp = [""];
+var type = [""];
 var styleType = styles.container;
+var typeSelect;
 
 function Breed(props) {
   if (props.type == 1) {
-    temp = cat;
+    type = cat;
+    typeSelect = "cat";
     styleType = styles.containerC;
   } else if (props.type == 2) {
-    temp = dog;
+    type = dog;
+    typeSelect = "dog";
   }
 
   const navigate = useNavigate();
 
   const clicked = (breed) => {
-    navigate("/result", { state: { breed: breed } });
+    navigate("/result", { state: { breed: breed, typeSelect: typeSelect } });
   };
 
   return (
     <>
       <div className={styleType}>
-        {temp.map((src) => (
+        {type.map((src) => (
           <>
             <div
               key={src}
