@@ -66,6 +66,8 @@ app.listen(PORT, () =>
 );
 
 */
+
+/*
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -105,8 +107,20 @@ app.get("/", (req, res) => {
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
-/*
-axios.get("https://www.naver.com").then((data) => {
-  console.log(data);
-});
 */
+
+const express = require("express");
+const app = express();
+
+app.listen(4000, function () {
+  console.log("listening on 4000");
+});
+
+//CORS 설정
+const cors = require("cors");
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("Chris!");
+  console.log("My name is...");
+});

@@ -21,7 +21,6 @@ function App() {
     </BrowserRouter>
   );
   */
-
   /*
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -54,7 +53,7 @@ function App() {
     );
   }
   */
-
+  /*
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
@@ -76,6 +75,22 @@ function App() {
     <div>
       <h1>{message}</h1>
     </div>
+  );
+  */
+
+  const [data, setData] = useState("Hi!");
+
+  function clicked() {
+    fetch("http://localhost:4000/")
+      .then((res) => res.text())
+      .then((data) => setData(data));
+  }
+
+  return (
+    <>
+      <h1>{data}</h1>
+      <button onClick={clicked}>What's your name?</button>
+    </>
   );
 }
 
