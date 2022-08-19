@@ -13,10 +13,15 @@ function ResultStat(props) {
   //Django 백엔드에서 연산
   const data = Search(breed, typeSelect, names);
 
+  var temp = "";
+  for (var i in data) {
+    temp += "key: " + i + " values: " + data[i] + "\n";
+  }
+
   return (
     <div>
       <ResultSummary breed={breed} typeSelect={typeSelect} />
-      <h1>{data}</h1>
+      <h1>{temp}</h1>
       <RestAPI />
     </div>
   );
