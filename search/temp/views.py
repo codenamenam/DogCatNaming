@@ -1,56 +1,27 @@
-from urllib.parse import quote_plus
-from django.shortcuts import render
-
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from rest_framework.response import Response
+from .models import CatSearch, DogSearch
+from rest_framework.views import APIView
+from .serializers import CatSearchSerializer, DogSearchSerializer
 from django.http import HttpResponse
 
-import json
 
-import re
+class CatSearchListAPI(APIView):
+    def get(self, request):
+        breed = request.GET.get('breed')
+        queryset = CatSearch.objects.filter(breed=breed)
+        print(queryset)
+        serializer = CatSearchSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
-def search(request):
-    # Chrome 드라이버 설정
-    options = webdriver.ChromeOptions()
-    options.add_argument("headless")
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+class DogSearchListAPI(APIView):
+    def get(self, request):
+        breed = request.GET.get('breed')
+        queryset = DogSearch.objects.filter(breed=breed)
+        print(queryset)
+        serializer = DogSearchSerializer(queryset, many=True)
+        return Response(serializer.data)
 
-    # URL 만들기
-    baseurl = "https://www.google.com/search?q="
-    words = request.GET.get('words')
-    breed = request.GET.get('breed')
 
-    # JSON -> dictionary
-    jsonObjectWords = json.loads(words)
-
-    message = ""
-    keyList = list(jsonObjectWords.keys())
-    for keyword in keyList:
-        # 검색어 만들기
-        url = baseurl + quote_plus(breed+" "+keyword)
-        driver.get(url)
-        html = driver.page_source
-
-        # BeautifulSoup
-        setup = BeautifulSoup(html, "html.parser")
-        r = setup.select(".appbar")
-
-        for i in r:
-            result = i.select_one("#result-stats").text
-
-            # 검색결과 약 0000개 (0.XX)초 slicing
-            index = -1
-            for c in result:
-                if (c != "개"):
-                    index += 1
-                else:
-                    break
-            searchResult = re.sub(r'[^0-9]', '', result[:index+1])
-            jsonObjectWords[keyword] = int(searchResult)
-
-    driver.close()
-
-    result = json.dumps(jsonObjectWords)
-    return HttpResponse(result)
+def hi(request):
+    return HttpResponse("Hi!")

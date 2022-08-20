@@ -25,10 +25,6 @@ SECRET_KEY = 'django-insecure-zc@tupi&ck#0nowlk1!5902b5k=v27v(m^7ce9(z((5iyai-s-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# CORS 추가
-ALLOWED_HOSTS = ['*']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,8 +37,13 @@ INSTALLED_APPS = [
     ########
     'temp',  # APP 이름
     'rest_framework',  # REST API
-    'corsheaders'  # CORS 추가
+    'corsheaders',  # CORS 추가
+    'django_apscheduler',
 ]
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+
+SCHEDULER_DEFAULT = True
 
 # rest framework 권한 설정
 REST_FRAMEWORK = {
@@ -52,6 +53,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # CORS 추가
+    'django.middleware.common.CommonMiddleware',  # CORS 추가
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # CORS 추가
 ]
 
 # CORS 추가
