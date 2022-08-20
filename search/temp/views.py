@@ -8,6 +8,8 @@ from django.http import HttpResponse
 
 import json
 
+import re
+
 
 def search(request):
     # Chrome 드라이버 설정
@@ -17,13 +19,17 @@ def search(request):
 
     # URL 만들기
     baseurl = "https://www.google.com/search?q="
-    words = request.GET.get('words')  # 그냥 stringify해버림..
-    jsonObjectWords = json.loads(words)  # dictionary
+    words = request.GET.get('words')
+    breed = request.GET.get('breed')
+
+    # JSON -> dictionary
+    jsonObjectWords = json.loads(words)
 
     message = ""
     keyList = list(jsonObjectWords.keys())
     for keyword in keyList:
-        url = baseurl + quote_plus(keyword)
+        # 검색어 만들기
+        url = baseurl + quote_plus(breed+" "+keyword)
         driver.get(url)
         html = driver.page_source
 
@@ -33,7 +39,18 @@ def search(request):
 
         for i in r:
             result = i.select_one("#result-stats").text
-            message += result
+
+            # 검색결과 약 0000개 (0.XX)초 slicing
+            index = -1
+            for c in result:
+                if (c != "개"):
+                    index += 1
+                else:
+                    break
+            searchResult = re.sub(r'[^0-9]', '', result[:index+1])
+            jsonObjectWords[keyword] = int(searchResult)
 
     driver.close()
-    return HttpResponse(message)
+
+    result = json.dumps(jsonObjectWords)
+    return HttpResponse(result)
