@@ -3,31 +3,19 @@
 import ResultSummary from "./ResultSummary";
 import NameData from "./NameData";
 import Search from "./Search";
-import RestAPI from "../../RestAPI";
-import { useState } from "react";
 
 function ResultStat(props) {
   const breed = props.breed;
   const typeSelect = props.typeSelect;
-  var names = typeSelect === "cat" ? NameData[1] : NameData[0];
-  const [summary, setSummary] = useState("No");
+  const names = typeSelect === "cat" ? NameData[1] : NameData[0];
 
-  //Django 백엔드에서 연산
-  const data = Search(breed, typeSelect, names);
-  console.log(data);
-  //const temp = Object.keys(data);
+  // Search 결과 db로부터 받아옴
+  const result = Search(breed, typeSelect, names);
+
   return (
     <div>
       <ResultSummary breed={breed} typeSelect={typeSelect} />
-      <h1>{summary}</h1>
-      <button
-        onClick={() => {
-          setSummary("asdf");
-        }}
-      >
-        Update
-      </button>
-      <RestAPI />
+      <h1>{JSON.stringify(result)}</h1>
     </div>
   );
 }

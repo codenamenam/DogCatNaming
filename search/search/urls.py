@@ -23,5 +23,5 @@ urlpatterns = [
     path('', include('temp.urls')),
     # URL 맵핑
     path('api/cat/', CatSearchListAPI.as_view()),
-    path('api/dog/', DogSearchListAPI.as_view())
+    path('api/dog/', DogSearchListAPI.as_view()),
 ]

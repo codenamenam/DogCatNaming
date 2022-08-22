@@ -1,11 +1,11 @@
 /* eslint-disable */
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Search(breed, typeSelect, names) {
   const arr = names.split(" ");
   var searchWords = {};
-  var searchResults = "";
-  var result = [];
+  const [result, setResult] = useState("");
 
   // JSON 형식으로 값 저장
   for (var i in arr) {
@@ -13,26 +13,27 @@ function Search(breed, typeSelect, names) {
     searchWords[queryWords] = "number";
   }
 
-  try {
-    var url = "http://127.0.0.1:8000/api/";
-    if (typeSelect === "dog") {
-      url += "dog";
-    } else {
-      url += "cat";
-    }
+  useEffect(() => {
+    try {
+      var url = "http://127.0.0.1:8000/api/";
+      if (typeSelect === "dog") {
+        url += "dog";
+      } else {
+        url += "cat";
+      }
 
-    axios
-      .get(url, {
-        params: { breed: breed },
-      })
-      .then((response) => {
-        searchResults = response.data;
-        result.push(searchResults);
-        console.log(searchResults[0]);
-      });
-  } catch (error) {
-    console.error(error);
-  }
+      axios
+        .get(url, {
+          params: { breed: breed },
+        })
+        .then((response) => {
+          const searchResults = response.data;
+          setResult(searchResults[0]);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   return result;
 }
