@@ -2,16 +2,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Search(breed, typeSelect, names) {
-  const arr = names.split(" ");
-  var searchWords = {};
+function Search(breed, typeSelect) {
   const [result, setResult] = useState("");
-
-  // JSON 형식으로 값 저장
-  for (var i in arr) {
-    var queryWords = arr[i];
-    searchWords[queryWords] = "number";
-  }
 
   useEffect(() => {
     try {

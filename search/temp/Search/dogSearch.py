@@ -1,4 +1,5 @@
 
+from curses import KEY_COMMAND
 from bs4 import BeautifulSoup
 from ..models import DogSearch
 import json
@@ -26,7 +27,7 @@ def search(driver):
     time.sleep(2)
     element = driver.find_element(By.NAME, 'q')
     element.clear()
-    element.send_keys("시작")
+    element.send_keys("asdf")
     element.submit()
 
     for i in dogBreedList:
@@ -37,15 +38,18 @@ def search(driver):
         for key in dogNameList:
 
             if not (key == 'id' or key == 'breed'):
-                keyword = breedName + " " + key
+                keyword = "\"" + breedName + " " + key + "\""
 
                 # 검색
-                time.sleep(2)
+                time.sleep(3)
                 if count % 10 == 0:
                     time.sleep(60)
                 count += 1
                 print(keyword)
                 element = driver.find_element(By.NAME, 'q')
+                if element == None:
+                    time.sleep(30)
+                    element = driver.find_element(By.NAME, 'q')
                 element.clear()
                 element.send_keys(keyword)
                 driver.find_element(By.XPATH,
