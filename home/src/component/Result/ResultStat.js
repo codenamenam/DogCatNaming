@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import ResultSummary from "./ResultSummary";
 import Search from "./Search";
+import ShowChart from "./ShowChart";
 
 function ResultStat(props) {
   const breed = props.breed;
@@ -26,22 +27,13 @@ function ResultStat(props) {
 
   console.log(orderedResult);
 
-  function chart() {
-    useEffect(() => {
-      const script = document.createElement("script");
-      script.src = "https://www.gstatic.com/charts/loader.js";
-      script.async = true;
-      document.body.appendChild(script);
-    });
-  }
-
   return (
     <>
       <div>
         <ResultSummary breed={breed} maxBreed={orderedResult[0]} />
       </div>
       <div>
-        <h1>{orderedResult}</h1>
+        <ShowChart result={orderedResult} />
       </div>
     </>
   );

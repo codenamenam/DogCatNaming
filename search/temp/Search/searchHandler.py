@@ -9,18 +9,21 @@ chromedriver_autoinstaller.install()
 
 
 def search():
-    '''
-    options = webdriver.ChromeOptions()
-    # options.add_argument("headless")
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-    '''
 
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless")
+    user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv: 11.0) like Gecko"
+    options.add_argument('user-agent='+user_agent)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+
+    '''
     options = Options()
     options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
     chrome_driver = f"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     driver = webdriver.Chrome(options=options)
+    '''
 
-    catSearch.search(driver)
     dogSearch.search(driver)
+    catSearch.search(driver)
 
     driver.quit()

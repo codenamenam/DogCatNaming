@@ -39,21 +39,18 @@ def search(driver):
 
             if not (key == 'id' or key == 'breed'):
                 keyword = "\"" + breedName + " " + key + "\""
+                #keyword = breedName + " " + key
 
                 # 검색
-                time.sleep(3)
+                time.sleep(20)
                 if count % 10 == 0:
                     time.sleep(60)
                 count += 1
                 print(keyword)
                 element = driver.find_element(By.NAME, 'q')
-                if element == None:
-                    time.sleep(30)
-                    element = driver.find_element(By.NAME, 'q')
                 element.clear()
                 element.send_keys(keyword)
-                driver.find_element(By.XPATH,
-                                    '//*[@id="tsf"]/div[1]/div[1]/div[2]/button').click()
+                element.submit()
 
                 html = driver.page_source
 
