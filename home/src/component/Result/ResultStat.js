@@ -16,7 +16,7 @@ function ResultStat(props) {
   delete result.id;
   delete result.breed;
 
-  // json을 값 기준으로 정렬
+  // json을 값 기준으로 내림차순 정렬
   let orderedResult = [];
   for (let i in result) {
     orderedResult.push([i, result[i]]);
@@ -26,14 +26,19 @@ function ResultStat(props) {
   });
 
   console.log(orderedResult);
+  const style = {
+    margin: "70px",
+  };
 
   return (
     <>
-      <div>
-        <ResultSummary breed={breed} maxBreed={orderedResult[0]} />
-      </div>
-      <div>
-        <ShowChart result={orderedResult} />
+      <div class="row" style={style}>
+        <div class="col-sm-5">
+          <ResultSummary breed={breed} maxBreed={orderedResult[0]} />
+        </div>
+        <div class="col-sm-5">
+          <ShowChart result={orderedResult} />
+        </div>
       </div>
     </>
   );

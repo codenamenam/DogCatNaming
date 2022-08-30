@@ -16,17 +16,17 @@ function ShowChart(props) {
   }
 
   const options = {
-    title: "Hello",
+    title: "강아지 이름",
     width: 600,
     height: 400,
-    bar: { groupWidth: "95%" },
+    bar: { groupWidth: "80%" },
     legend: { position: "none" },
   };
   const chart = (
     <Chart
       chartType="BarChart"
       width="100%"
-      height="400px"
+      height="500px"
       data={data}
       options={options}
     />
@@ -35,7 +35,10 @@ function ShowChart(props) {
   //차트 만들기
   useEffect(() => {});
 
-  return <>{chart}</>;
+  const style = {
+    background: "brown",
+  };
+  return <div style={style}>{chart}</div>;
 }
 
 export default ShowChart;

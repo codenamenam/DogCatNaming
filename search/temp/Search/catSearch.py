@@ -42,7 +42,7 @@ def search(driver):
                 #keyword = breedName + " " + key
 
                 # 검색
-                time.sleep(20)
+                time.sleep(30)
                 if count % 10 == 0:
                     time.sleep(60)
                 count += 1

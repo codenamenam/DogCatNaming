@@ -2,7 +2,7 @@
 
 import { useLocation } from "react-router-dom";
 import ResultStat from "./Result/ResultStat";
-import Talk from "./Result/Talk";
+import Campaign from "./Result/Campaign";
 
 function Result() {
   const location = useLocation();
@@ -18,7 +18,7 @@ function Result() {
   return (
     <>
       <ResultStat breed={breed} typeSelect={typeSelect} />
-      <Talk typeSelect={typeSelect} />
+      <Campaign typeSelect={typeSelect} />
     </>
   );
 }
