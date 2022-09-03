@@ -67,46 +67,54 @@ const dog = [
   ],
 ];
 
-var type = [""];
-var styleType = styles.container;
-var typeSelect;
+let animal = null;
+let styleType = styles.container;
+let typeSelect;
 
 function Breed(props) {
-  if (props.type == 1) {
-    type = cat;
-    typeSelect = "cat";
-    styleType = styles.containerC;
-  } else if (props.type == 2) {
-    type = dog;
-    typeSelect = "dog";
-  }
-
   const navigate = useNavigate();
-
   const clicked = (breed) => {
     navigate("/result", { state: { breed: breed, typeSelect: typeSelect } });
   };
 
-  return (
+  if (animal == null) {
+    animal = [""];
+    return <></>;
+  } else if (props.animal == 1) {
+    animal = cat;
+    typeSelect = "cat";
+  } else if (props.animal == 2) {
+    animal = dog;
+    typeSelect = "dog";
+  }
+
+  const breedSelectElement = (
     <>
+      <h1>종류</h1>
       <div className={styleType}>
-        {type.map((src) => (
-          <>
-            <div
-              key={src}
-              className={styles.card}
-              style={{
-                backgroundImage: `url(${src[1]})`,
-              }}
-              onClick={() => clicked(src[0])}
-            >
-              <div className={styles.cardText}>{src[0]}</div>
-            </div>
-          </>
-        ))}
+        {animal.map(
+          (
+            src //카드 자동 생성
+          ) => (
+            <>
+              <div
+                key={src}
+                className={styles.card}
+                style={{
+                  backgroundImage: `url(${src[1]})`,
+                }}
+                onClick={() => clicked(src[0])}
+              >
+                <div className={styles.cardText}>{src[0]}</div>
+              </div>
+            </>
+          )
+        )}
       </div>
     </>
   );
+
+  return <>{breedSelectElement}</>;
 }
 
 export default Breed;

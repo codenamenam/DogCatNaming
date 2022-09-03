@@ -27,7 +27,7 @@ def search(driver):
     time.sleep(2)
     element = driver.find_element(By.NAME, 'q')
     element.clear()
-    element.send_keys("asdf")
+    element.send_keys("ccdf")
     element.submit()
 
     for i in dogBreedList:
@@ -42,7 +42,7 @@ def search(driver):
                 #keyword = breedName + " " + key
 
                 # 검색
-                time.sleep(30)
+                time.sleep(60)
                 if count % 10 == 0:
                     time.sleep(60)
                 count += 1

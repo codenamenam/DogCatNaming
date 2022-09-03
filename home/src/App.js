@@ -1,14 +1,11 @@
 /* eslint-disable */
 
 import "./App.css";
-import RestAPI from "./RestAPI";
 import Title from "./component/Title";
 import Body from "./component/Body";
 import Result from "./component/Result";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
 function App() {
   return (

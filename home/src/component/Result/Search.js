@@ -5,26 +5,40 @@ import { useEffect, useState } from "react";
 function Search(breed, typeSelect) {
   const [result, setResult] = useState("");
 
-  useEffect(() => {
-    try {
-      var url = "http://127.0.0.1:8000/api/";
-      if (typeSelect === "dog") {
-        url += "dog";
-      } else {
-        url += "cat";
-      }
-
-      axios
-        .get(url, {
-          params: { breed: breed },
-        })
-        .then((response) => {
-          const searchResults = response.data;
-          setResult(searchResults[0]);
-        });
-    } catch (error) {
-      console.error(error);
+  async function api() {
+    var url = "http://127.0.0.1:8000/api/";
+    if (typeSelect === "dog") {
+      url += "dog";
+    } else {
+      url += "cat";
     }
+
+    await axios
+      .get(url, {
+        params: { breed: breed },
+      })
+      .then((response) => {
+        const searchResults = response.data;
+        let temp = searchResults[0];
+
+        delete temp.id;
+        delete temp.breed;
+
+        // json을 값 기준으로 내림차순 정렬
+        let orderedResult = [];
+        for (let i in temp) {
+          orderedResult.push([i, temp[i]]);
+        }
+        orderedResult.sort(function (a, b) {
+          return b[1] - a[1];
+        });
+
+        setResult(orderedResult);
+      });
+  }
+
+  useEffect(() => {
+    api();
   }, []);
 
   return result;

@@ -3,9 +3,18 @@
 import { useLocation } from "react-router-dom";
 import ResultStat from "./Result/ResultStat";
 import Campaign from "./Result/Campaign";
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 function Result() {
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
+
+  /*
+  useEffect(() => {
+    offLoading();
+  }, []);
+  */
 
   //직접 주소로 접속했을때
   if (location.state == null) {
@@ -15,10 +24,21 @@ function Result() {
   const breed = location.state.breed;
   const typeSelect = location.state.typeSelect;
 
+  function offLoading() {
+    setTimeout(function () {
+      setLoading(false);
+    }, 1000);
+    console.log("asdf");
+  }
+
   return (
     <>
-      <ResultStat breed={breed} typeSelect={typeSelect} />
-      <Campaign typeSelect={typeSelect} />
+      {loading && <Loading />},
+      {!loading && (
+        <div>
+          <ResultStat breed={breed} typeSelect={typeSelect} />
+        </div>
+      )}
     </>
   );
 }

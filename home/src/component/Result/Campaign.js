@@ -1,11 +1,11 @@
 /*eslint-disable*/
 
 function Campaign(props) {
-  const type = props.typeSelect;
-
   const style = {
     background: "orange",
-    height: "400px",
+    height: "100px",
+    position: "fixed",
+    bottom: 300,
   };
 
   const bannerStyle = {
