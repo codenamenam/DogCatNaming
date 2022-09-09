@@ -6,6 +6,7 @@ import Body from "./component/Body";
 import Result from "./component/Result";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
+import Contact from "./component/Contact";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Body />}></Route>
         <Route path="/result" element={<Result />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     </BrowserRouter>
   );

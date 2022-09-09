@@ -21,8 +21,11 @@ function ResultStat(props) {
     margin: "70px",
   };
 
+  const containerStyle = {
+    margin: "50px",
+  };
   return (
-    <>
+    <div className="ResultContainer" style={containerStyle}>
       <div class="row" style={style}>
         <div class="col-sm-5">
           <ResultSummary breed={breed} maxBreed={result[0]} />
@@ -32,7 +35,7 @@ function ResultStat(props) {
         </div>
       </div>
       <Campaign typeSelect={typeSelect} />
-    </>
+    </div>
   );
 }
 

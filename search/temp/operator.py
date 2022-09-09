@@ -8,6 +8,6 @@ from .Search.searchHandler import search
 
 def start():
     sched = BackgroundScheduler(timezone='Asia/Seoul')  # 시간대 설정
-    sched.add_job(search, 'cron', hour='2',
-                  minute='34', id='test')  # 지정된 시각에 실행
+    sched.add_job(search, 'cron', hour='23',
+                  minute='59', id='test')  # 지정된 시각에 실행
     sched.start()

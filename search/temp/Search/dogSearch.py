@@ -54,13 +54,13 @@ def search(driver):
 
                 html = driver.page_source
 
-                # BeautifulSoup
+                # BeautifulSoup. 얘 잘 안돌아가는거같은데
                 setup = BeautifulSoup(html, "html.parser")
                 r = setup.select(".appbar")
 
                 for i in r:
                     result = i.select_one("#result-stats").text
-
+                    print(result)
                     # 검색결과 약 0000개 (0.XX)초 slicing
                     index = -1
                     for c in result:
@@ -75,7 +75,6 @@ def search(driver):
                     break
 
         # 검색결과
-        #print(json.dumps(temp, ensure_ascii=False))
         headers = {'Content-Type': 'application/json;'}
         requests.put("http://127.0.0.1:8000/api/dog/",
                      data=json.dumps(temp, ensure_ascii=False).encode('utf-8'), headers=headers)

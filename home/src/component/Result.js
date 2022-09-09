@@ -24,13 +24,6 @@ function Result() {
   const breed = location.state.breed;
   const typeSelect = location.state.typeSelect;
 
-  function offLoading() {
-    setTimeout(function () {
-      setLoading(false);
-    }, 1000);
-    console.log("asdf");
-  }
-
   return (
     <>
       {loading && <Loading />},

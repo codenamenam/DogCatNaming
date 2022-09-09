@@ -3,14 +3,14 @@
 function Campaign(props) {
   const style = {
     background: "orange",
-    height: "100px",
-    position: "fixed",
-    bottom: 300,
+    position: "absolute",
+    bottom: "30px",
   };
 
   const bannerStyle = {
     resizeMode: "cover",
     width: "100%",
+    height: "100px",
   };
   return (
     <div style={style}>
