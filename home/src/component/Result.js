@@ -2,7 +2,6 @@
 
 import { useLocation } from "react-router-dom";
 import ResultStat from "./Result/ResultStat";
-import Campaign from "./Result/Campaign";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 

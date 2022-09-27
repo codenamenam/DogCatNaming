@@ -9,17 +9,19 @@ chromedriver_autoinstaller.install()
 
 
 def search():
-    '''
+
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
-    user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv: 11.0) like Gecko"
+    #options.add_experimental_option('debuggerAddress', '127.0.0.1:9222')
+    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
     options.add_argument('user-agent='+user_agent)
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)    
-    '''
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
+    '''
     options = Options()
     options.add_argument("headless")
     driver = webdriver.Chrome(options=options)
+    '''
 
     dogSearch.search(driver)
     catSearch.search(driver)

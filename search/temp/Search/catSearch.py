@@ -44,7 +44,7 @@ def search(driver):
                 # 검색
                 time.sleep(60)
                 if count % 10 == 0:
-                    time.sleep(60)
+                    time.sleep(100)
                 count += 1
                 print(keyword)
                 element = driver.find_element(By.NAME, 'q')

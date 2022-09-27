@@ -1,6 +1,8 @@
 /*eslint-disable*/
 
 import { useEffect } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
 import { Chart } from "react-google-charts";
 
 function ShowChart(props) {
@@ -16,16 +18,32 @@ function ShowChart(props) {
   }
 
   const options = {
-    title: "강아지 이름",
-    width: 600,
-    height: 400,
+    title: "상위 10개 이름 통계",
+    subtitle: "asdfasdffs",
     bar: { groupWidth: "80%" },
     legend: { position: "none" },
+    colors: ["gray"],
+    chartArea: {
+      width: "80%",
+    },
+    titleTextStyle: {
+      fontSize: 24,
+    },
+    vAxis: {
+      textStyle: {
+        fontSize: 16,
+      },
+    },
+    hAxis: {
+      textStyle: {
+        fontSize: 14,
+      },
+    },
   };
   const chart = (
     <Chart
       chartType="BarChart"
-      width="100%"
+      width="600px"
       height="500px"
       data={data}
       options={options}
@@ -35,10 +53,13 @@ function ShowChart(props) {
   //차트 만들기
   useEffect(() => {});
 
-  const style = {
-    background: "brown",
-  };
-  return <div style={style}>{chart}</div>;
+  return (
+    <Row>
+      <Col>
+        <div>{chart}</div>
+      </Col>
+    </Row>
+  );
 }
 
 export default ShowChart;

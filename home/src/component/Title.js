@@ -20,12 +20,11 @@ function Title() {
             height="50"
             className="d-inline-block"
           />{" "}
-          댕냥이 이름짓기
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto h5 fw-bold">
             <Nav.Link href="https://www.animals.or.kr/center/adopt">
               입양 캠페인
             </Nav.Link>

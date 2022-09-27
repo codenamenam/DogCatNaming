@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import ResultSummary from "./ResultSummary";
 import Search from "./Search";
 import ShowChart from "./ShowChart";
-import Campaign from "./Campaign";
+
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 function ResultStat(props) {
   const breed = props.breed;
@@ -18,23 +20,38 @@ function ResultStat(props) {
   }
 
   const style = {
-    margin: "70px",
+    margin: 0,
+  };
+
+  const imgStyle = {
+    width: "100%",
+    minHeight: "110px",
+    maxHeight: "150px",
+    objectFit: "scale-down",
   };
 
   const containerStyle = {
-    margin: "50px",
+    margin: "100px 36px 48px 36px",
   };
   return (
     <div className="ResultContainer" style={containerStyle}>
-      <div class="row" style={style}>
-        <div class="col-sm-5">
+      <Row xs={1} style={style}>
+        <Col xs={12} lg={6}>
           <ResultSummary breed={breed} maxBreed={result[0]} />
-        </div>
-        <div class="col-sm-5">
+        </Col>
+        <Col xs={12} lg={6}>
           <ShowChart result={result} />
-        </div>
-      </div>
-      <Campaign typeSelect={typeSelect} />
+        </Col>
+      </Row>
+      <Row>
+        <Col className="justify-content-center">
+          <div>
+            <a href="https://www.animals.or.kr/center/adopt">
+              <img src="image/banner.png" style={imgStyle}></img>
+            </a>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

@@ -88,10 +88,24 @@ function Breed(props) {
     typeSelect = "dog";
   }
 
+  const selectContainerStyle = {};
+
+  const titleStyle = {
+    display: "flex",
+    margin: "72px 0 36px 0",
+    justifyContent: "center",
+  };
+
+  const breedCardContainerStyle = {
+    margin: "100px 0px 200px 0px",
+  };
+
   const breedSelectElement = (
-    <>
-      <h1>종류</h1>
-      <div className={styleType}>
+    <div style={selectContainerStyle}>
+      <h1 style={titleStyle} className="h1 fw-bold">
+        반려동물의 종류는?
+      </h1>
+      <div className={styleType} style={breedCardContainerStyle}>
         {animal.map(
           (
             src //카드 자동 생성
@@ -111,7 +125,7 @@ function Breed(props) {
           )
         )}
       </div>
-    </>
+    </div>
   );
 
   return <>{breedSelectElement}</>;

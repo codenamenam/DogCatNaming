@@ -17,8 +17,22 @@ function Body() {
     paddingTop: "100px",
   };
 
-  const cardDeckStyle = {
+  const leftCardDeckStyle = {
     float: "none",
+    margin: "0 auto",
+  };
+
+  const rightCardDeckStyle = {
+    float: "none",
+    margin: "0 auto",
+  };
+
+  const titleStyle = {
+    display: "flex",
+    margin: "36px 0 48px 0",
+  };
+
+  const cardTitleStyle = {
     margin: "0 auto",
   };
 
@@ -31,35 +45,46 @@ function Body() {
   //Bootstrap card-deck 이용
   const dogCatSelectElement = (
     <Container style={containerPaddingTop}>
-      <Row xs={1} className="justify-content-center">
-        <Col md="auto">
-          <h1>동물을 선택해주세요.</h1>
+      <Row xs={1}>
+        <Col
+          xs={12}
+          lg={12}
+          style={titleStyle}
+          className="justify-content-center"
+        >
+          <h1 className="fw-bold">동물을 선택해주세요.</h1>
         </Col>
       </Row>
-      <Row xs={2} style={cardDeckStyle}>
-        <Col>
-          <Card onClick={() => handleClick(1)} style={cardDeckStyle}>
-            <Card.Img
-              variant="top"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            />
-            <Card.Body>
-              <Card.Title>고양이</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card onClick={() => handleClick(2)} style={cardDeckStyle}>
-            <Card.Img
-              variant="top"
-              src="https://cdn.crowdpic.net/detail-thumb/thumb_d_382A8A747FFDF073E20C13398D110DE7.jpg"
-            />
-            <Card.Body>
-              <Card.Title>강아지</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <div>
+        <Row xs={2} className="justify-content-center">
+          <Col lg={6}>
+            <Card onClick={() => handleClick(1)} style={leftCardDeckStyle}>
+              <Card.Img
+                variant="top"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+              />
+              <Card.Body>
+                <Card.Title style={cardTitleStyle}>
+                  <h4>고양이</h4>
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col lg={6}>
+            <Card onClick={() => handleClick(2)} style={rightCardDeckStyle}>
+              <Card.Img
+                variant="top"
+                src="https://cdn.crowdpic.net/detail-thumb/thumb_d_382A8A747FFDF073E20C13398D110DE7.jpg"
+              />
+              <Card.Body>
+                <Card.Title>
+                  <h4>강아지</h4>
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </Container>
   );
 
