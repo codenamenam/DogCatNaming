@@ -8,6 +8,7 @@ import Body from "./component/Body";
 import Result from "./component/Result";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "./component/Contact";
+import { Chart } from "react-google-charts";
 
 function App() {
   return (

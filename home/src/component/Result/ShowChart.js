@@ -18,8 +18,7 @@ function ShowChart(props) {
   }
 
   const options = {
-    title: "상위 10개 이름 통계",
-    subtitle: "asdfasdffs",
+    title: "이름 통계 Top 10",
     bar: { groupWidth: "80%" },
     legend: { position: "none" },
     colors: ["gray"],
@@ -41,13 +40,7 @@ function ShowChart(props) {
     },
   };
   const chart = (
-    <Chart
-      chartType="BarChart"
-      width="600px"
-      height="500px"
-      data={data}
-      options={options}
-    />
+    <Chart chartType="BarChart" height="500px" data={data} options={options} />
   );
 
   //차트 만들기
