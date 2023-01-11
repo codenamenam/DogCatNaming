@@ -9,26 +9,18 @@ from selenium.webdriver.common.by import By
 import requests
 
 
-def search(driver):
+def search():
 
+    # 검색할 키워드들 리스트로 초기화
     catAll = CatSearch.objects.all()
     catBreedList = catAll.values('breed')
     catNameList = catAll.values()[0].keys()
 
-    # 접속할 url
-    url = "https://www.google.com"
-
-    # 접속 시도
-    driver.get(url)
-
-    num = 123
+    num = 0
     count = 1
 
-    time.sleep(2)
-    element = driver.find_element(By.NAME, 'q')
-    element.clear()
-    element.send_keys("df")
-    element.submit()
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15'}
 
     for i in catBreedList:
         breedName = i['breed']
@@ -36,42 +28,27 @@ def search(driver):
         temp['breed'] = breedName
 
         for key in catNameList:
-
             if not (key == 'id' or key == 'breed'):
+                url = "https://www.google.com/search?q="
                 keyword = "\"" + breedName + " " + key + "\""
-                #keyword = breedName + " " + key
+                url += keyword
 
                 # 검색
-                time.sleep(60)
-                if count % 10 == 0:
-                    time.sleep(100)
+                result = requests.get(url, headers=headers)
+                result.encoding = result.apparent_encoding
                 count += 1
                 print(keyword)
-                element = driver.find_element(By.NAME, 'q')
 
-                element.clear()
-                element.send_keys(keyword)
-                element.submit()
+                for i in result:
+                    soup = BeautifulSoup(result.text, 'html.parser')
 
-                html = driver.page_source
+                    total_results_text = soup.find(
+                        "div", {"id": "result-stats"}).find(text=True, recursive=False)
+                    results_num = ''.join(
+                        [num for num in total_results_text if num.isdecimal()])
+                    print(results_num)
 
-                # BeautifulSoup
-                setup = BeautifulSoup(html, "html.parser")
-                r = setup.select(".appbar")
-
-                for i in r:
-                    result = i.select_one("#result-stats").text
-                    print(result)
-                    # 검색결과 약 0000개 (0.XX)초 slicing
-                    index = -1
-                    for c in result:
-                        if (c != "개"):
-                            index += 1
-                        else:
-                            break
-
-                    searchResult = re.sub(r'[^0-9]', '', result[:index+1])
-                    num = int(searchResult)
+                    num = int(results_num)
                     temp[key] = num
                     break
 
