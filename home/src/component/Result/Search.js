@@ -6,7 +6,7 @@ function Search(breed, typeSelect) {
   const [result, setResult] = useState("");
 
   async function api() {
-    var url = "http://127.0.0.1:8000/api/";
+    var url = "http://codenamenam.pythonanywhere.com/api/";
     if (typeSelect === "dog") {
       url += "dog";
     } else {
