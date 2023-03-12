@@ -47,7 +47,12 @@ function Body() {
           style={titleStyle}
           className="justify-content-center"
         >
-          <h1 className="fw-bold">동물을 선택해주세요.</h1>
+          <h1 className="fw-bold">
+            <span style={{ color: "rgb(169, 128, 87)" }}>
+              당신의 소중한 아이는
+            </span>{" "}
+            무슨 동물인가요?
+          </h1>
         </Col>
       </Row>
       <div>
