@@ -1,21 +1,25 @@
 # DogCatNaming
 
-🐶, 🐱 이름을 지을 때 어떤 이름으로 지어야 될 지 고민하는 사람들이 많이 보여서 토이 프로젝트를 시작하게 되었습니다.
+강아지, 고양이 이름 통계 웹사이트
 
-# 📝 프로젝트 소개
 
-1. 강아지와 고양이 이름에 많이 사용되는 이름 상위 40~50개를 추립니다.
-2. 강아지, 고양이 별로 많이 기르는 종을 선별합니다. 강아지는 9종, 고양이는 6종으로 선택하였습니다.
-3. 강아지의 종, 고양이의 종 각각에 이름을 붙여서 조건 검색하여, 각 종마다 쓰이는 이름의 빈도를 파악합니다.
-4. 이를 그래프로 정리하여 각 종별로 많이 사용되는 이름 상위 10개를 결과창에서 보여줍니다.
+## 📝 프로젝트 소개
 
-# 💻 개발 환경
+1. 반려견, 반려묘 이름을 빈도 순 상위 40~50개로 사전에 선별
+2. 반려견 상위 9종, 반려묘 상위 6종 선별
+3. 반려동물의 각각의 종에 이름을 붙인 키워드를 동적 크롤링으로 주기적으로 검색하여 각 종별 이름 사용 빈도 카운트
+   - ex) "푸들 + 호두", "푸들 + 두부", .. "치와와 + 호두", "치와와 + 두부"...
+4. 각 종마다 사용된 이름 상위 10개를 막대 그래프로 시각화
 
-- API server framework: Django
-- Front-end framework: React
-- Database: sqlite3(from Django)
+## 💻 개발 환경
+- JavaScript, HTML/CSS, Python
+- Library: React, Selenium
+- API Server Framework: Django-rest-framework
+- Database: sqlite3 from Django
 
-# 배포를 하지 못한 이유
+## ✅ 배포
 
-- 구글 검색결과를 정기적으로 크롤링할때 reCaptcha에 걸림😭 정적, 동적 크롤링 둘다 막혀서 결국 포기..
-- ~~(배포완료)그래도 이왕에 프로젝트 엎어진겸, 공부나 해보려고 pythonanywhere랑 netlify 써서 어떻게든 웹서버랑 연결시켜서 억지로 배포라도 해볼 듯 합니다 하핳~~
+
+#### 웹사이트: https://capable-scone-0d39bb.netlify.app/
+
+![스크린샷 2023-03-11 오후 8.27.13.png](https://file.notion.so/f/f/25b30375-1d49-4fa3-9949-243fe4fff8aa/ecc30517-ee39-4dac-a63f-aca32ee9fe0e/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-03-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.27.13.png?id=0ebf5b1e-14c5-4913-bfeb-dab83e5f0f46&table=block&spaceId=25b30375-1d49-4fa3-9949-243fe4fff8aa&expirationTimestamp=1705125600000&signature=zLrScB3eTP0fK_26QM2tV0GW0L7kWwXH1Fc953teMTc&downloadName=%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA+2023-03-11+%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE+8.27.13.png)
